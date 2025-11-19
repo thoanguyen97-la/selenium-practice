@@ -4,6 +4,12 @@
     "last_name": "Nguyen",
     "email": "thoanguyen@gmail.com",
     "phone": "0999888777",
-    "address": "123 An Duong Vuong"
+    "address": "123 An Duong Vuong",
+    "dob_year": "1997",
+    "dob_month": "September",
+    "subject": "math",
+    "picture": "loopy-2.jpg",
+    "state": "NCR",
+    "city": "Noida"
   }
 }

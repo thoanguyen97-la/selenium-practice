@@ -20,27 +20,32 @@ def test_input_practice_form():
         data["phone"]
     )
     page.select_gender()
-    page.select_date_of_birth("1997","September")
+    page.select_date_of_birth(data["dob_year"],data["dob_month"])
     page.select_hobbies()
-    page.select_subject("math")
-    page.upload_picture("loopy-2.jpg")
+    page.select_subject(data["subject"])
+    page.upload_picture(data["picture"])
     page.fill_address(data["address"])
-    page.select_state("NCR")
-    page.select_city("Noida")
+    page.select_state(data["state"])
+    page.select_city(data["city"])
     #Step 3: Submit form
     page.submit_form()
     time.sleep(2)
     # 4. Assert kết quả
-    assert page.get_result_value("Student Name") == "Thoa Nguyen"
-    assert page.get_result_value("Student Email") == "thoanguyen@gmail.com"
-    assert page.get_result_value("Gender") == "Female"
-    assert page.get_result_value("Mobile") == "0999888777"
-    assert page.get_result_value("Date of Birth") == "25 September,1997"
-    assert page.get_result_value("Subjects") == "Maths"
-    assert page.get_result_value("Hobbies") == "Reading"
-    assert page.get_result_value("Picture") == "loopy-2.jpg"
-    assert page.get_result_value("Address") == "123 An Duong Vuong"
-    assert page.get_result_value("State and City") == "NCR Noida"
+    expected_data = {
+        "Student Name": "Thoa Nguyen",
+        "Student Email": "thoanguyen@gmail.com",
+        "Gender": "Female",
+        "Mobile": "0999888777",
+        "Date of Birth": "25 September,1997",
+        "Subjects": "Maths",
+        "Hobbies": "Reading",
+        "Picture": "loopy-2.jpg",
+        "Address": "123 An Duong Vuong",
+        "State and City": "NCR Noida",
+    }
+    for label, expected_value in expected_data.items():
+        actual_value= page.get_result_value(label)
+        assert actual_value == expected_value,f"expected {label}: {expected_value}, but got {actual_value}"
     print("Test Passed!")
 
 
